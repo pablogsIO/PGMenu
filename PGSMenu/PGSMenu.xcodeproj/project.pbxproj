@@ -12,6 +12,9 @@
 		6E5D2F8521555D59002AF833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D2F8321555D59002AF833 /* Main.storyboard */; };
 		6E5D2F8721555D5B002AF833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D2F8621555D5B002AF833 /* Assets.xcassets */; };
 		6E5D2F8A21555D5B002AF833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D2F8821555D5B002AF833 /* LaunchScreen.storyboard */; };
+		6E5D2F9321556625002AF833 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D2F9221556625002AF833 /* CircleButton.swift */; };
+		6EC7B5F621557B4C00D00E44 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC7B5F521557B4C00D00E44 /* Gradient.swift */; };
+		6EC7B5F9215585E400D00E44 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC7B5F8215585E400D00E44 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		6E5D2F8621555D5B002AF833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E5D2F8921555D5B002AF833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E5D2F8B21555D5B002AF833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E5D2F9221556625002AF833 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		6EC7B5F521557B4C00D00E44 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		6EC7B5F8215585E400D00E44 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		6E5D2F7E21555D59002AF833 /* PGSMenu */ = {
 			isa = PBXGroup;
 			children = (
+				6E5D2F9121555DCF002AF833 /* Library */,
 				6E5D2F7F21555D59002AF833 /* AppDelegate.swift */,
 				6E5D2F8121555D59002AF833 /* ViewController.swift */,
 				6E5D2F8321555D59002AF833 /* Main.storyboard */,
@@ -62,6 +69,16 @@
 				6E5D2F8B21555D5B002AF833 /* Info.plist */,
 			);
 			path = PGSMenu;
+			sourceTree = "<group>";
+		};
+		6E5D2F9121555DCF002AF833 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				6E5D2F9221556625002AF833 /* CircleButton.swift */,
+				6EC7B5F521557B4C00D00E44 /* Gradient.swift */,
+				6EC7B5F8215585E400D00E44 /* MenuView.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +91,7 @@
 				6E5D2F7821555D59002AF833 /* Sources */,
 				6E5D2F7921555D59002AF833 /* Frameworks */,
 				6E5D2F7A21555D59002AF833 /* Resources */,
+				6EC7B5F7215582F300D00E44 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -130,13 +148,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6EC7B5F7215582F300D00E44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6E5D2F7821555D59002AF833 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EC7B5F9215585E400D00E44 /* MenuView.swift in Sources */,
+				6E5D2F9321556625002AF833 /* CircleButton.swift in Sources */,
 				6E5D2F8221555D59002AF833 /* ViewController.swift in Sources */,
 				6E5D2F8021555D59002AF833 /* AppDelegate.swift in Sources */,
+				6EC7B5F621557B4C00D00E44 /* Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
