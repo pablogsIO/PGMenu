@@ -37,7 +37,7 @@ class MenuView: UIView {
 
     private func commonInit() {
 
-        self.backgroundColor = self.gradientColor.withAlphaComponent(1)
+        self.backgroundColor = self.gradientColor.withAlphaComponent(0.5)
         self.layer.cornerRadius = 0.15 * self.bounds.width
         let button = CircleButton(frame: CGRect(x: self.bounds.width/2 , y: self.bounds.height/2, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
         let view = UIView(frame: self.frame)
