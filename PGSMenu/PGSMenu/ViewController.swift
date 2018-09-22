@@ -16,6 +16,11 @@ class ViewController: UIViewController {
         
         let button = CircleButton(frame: CGRect(x: 100, y: 500, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
         self.view.addSubview(button)
+        
+        let icon = UIImageView(image: UIImage(named: "airquality"))
+    
+        self.view.addSubview(icon)
+        print("pablogsio: \(button.buttonType)")
 //
         let view = MenuView(frame: CGRect(x: 100, y: 100, width: 200, height: 200), color: UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5), gradientOrientation: .bottomLeftTopRight)
         self.view.addSubview(view)

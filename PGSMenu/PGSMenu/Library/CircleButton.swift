@@ -12,10 +12,11 @@ class CircleButton: UIButton {
 
     private var gradientOrientation = GradientOrientation.bottomRightTopLeft
     private var gradientColor = UIColor.black
-
+    
     init(frame: CGRect, color: UIColor, gradientOrientation: GradientOrientation) {
         let maximun = max(frame.width, frame.height)
-
+        
+        //self.frame = CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
         self.gradientOrientation = gradientOrientation
         self.gradientColor = color
@@ -43,25 +44,25 @@ class CircleButton: UIButton {
         setGradienteBackground(color: self.gradientColor, gradientOrientation: self.gradientOrientation)
         self.clipsToBounds = true
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
-        
-        let icon = UIImage(named: "airquality")
-        self.setImage(icon, for: .normal)
-        
 
+        self.setImage(UIImage(named: "airquality"), for: .normal)
+
+        self.bringSubviewToFront(self.imageView!)
     }
 }
 
 extension UIView {
 
-    func setGradienteBackground(color: UIColor, gradientOrientation: GradientOrientation) {
+    func setGradienteBackground(color: UIColor, gradientOrientation: GradientOrientation){
         let gradient = CAGradientLayer()
-        //gradient.colors = [color.cgColor, color.withAlphaComponent(0.2).cgColor]
+
         gradient.colors = [UIColor(rgb: 0x11998e).cgColor, UIColor(rgb: 0x38ef7d).cgColor]
         gradient.startPoint = gradientOrientation.points().startPoint
         gradient.endPoint = gradientOrientation.points().endPoint
         gradient.frame = bounds
-
         self.layer.insertSublayer(gradient, at: 0)
+        
+        
     }
 
 }
