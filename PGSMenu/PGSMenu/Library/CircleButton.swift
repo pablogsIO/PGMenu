@@ -39,8 +39,12 @@ class CircleButton: UIButton {
         setGradienteBackground(colors: gradientColors, orientation: gradientOrientation)
         self.clipsToBounds = true
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
-
+        self.translatesAutoresizingMaskIntoConstraints = false
+        //self.imageView?.contentMode = .scaleAspectFit
         self.setImage(UIImage(named: "airquality"), for: .normal)
+        
+        let margin = self.bounds.size.width/4
+        self.imageEdgeInsets = UIEdgeInsets(top: margin,left: margin,bottom: margin,right: margin)
 
         self.bringSubviewToFront(self.imageView!)
     }

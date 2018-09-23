@@ -48,7 +48,7 @@ class MenuView: UIView {
         
 //        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
 
-        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), gradientColors: parameters[.gradientcolors] as! GradientColors, gradientOrientation:  parameters[.orientation] as! GradientOrientation)
+        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[.gradientcolors] as! GradientColors, gradientOrientation:  parameters[.orientation] as! GradientOrientation)
         button.layer.masksToBounds  = true
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/8))

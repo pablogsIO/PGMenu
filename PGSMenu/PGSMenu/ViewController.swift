@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let view = MenuView(frame: CGRect(x: 100, y: 100, width: 100, height: 100), color: UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5), gradientOrientation: .bottomLeftTopRight)
+        //let view = MenuView(frame: CGRect(x: 100, y: 100, width: 100, height: 100), color: UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5), gradientOrientation: .bottomLeftTopRight)
         //self.view.addSubview(view)
         let buttonConfiguration = ButtonConfiguration<CircleButtonParameters,Any> { (type) -> Any in
             switch type {
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             }
         }
         
-        let menu = MenuView(frame: CGRect(x: 100, y: 100, width: 200, height: 100), parameters: buttonConfiguration)
+        let menu = MenuView(frame: CGRect(x: 100, y: 100, width: 100, height: 100), parameters: buttonConfiguration)
         
         self.view.addSubview(menu)
 
