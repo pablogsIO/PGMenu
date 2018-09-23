@@ -40,14 +40,19 @@ class MenuView: UIView {
         self.backgroundColor = self.gradientColor.withAlphaComponent(0.5)
         self.layer.cornerRadius = 0.15 * self.bounds.width
         let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
-        let view = UIView(frame: self.frame)
-        view.backgroundColor = UIColor.clear
+        
         button.layer.masksToBounds  = true
 
-        self.addSubview(button)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/8))
+        label.text = "Testing"
+        label.textAlignment = .center
+        label.textColor = UIColor(rgb: 0x11998e)
 
+        self.addSubview(button)
+        self.addSubview(label)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
+
         let centerHorizontally = NSLayoutConstraint(item: button,
                                                     attribute: .centerX,
                                                     relatedBy: .equal,
@@ -63,6 +68,15 @@ class MenuView: UIView {
                                                   attribute: .centerY,
                                                   multiplier: 1.0,
                                                   constant: 0.0)
+        let labelBottomConstraint = NSLayoutConstraint(item: label,
+                                                       attribute: .bottom,
+                                                       relatedBy: .equal,
+                                                       toItem: self,
+                                                       attribute: .bottomMargin,
+                                                       multiplier: 1.0,
+                                                       constant: 0.0)
+
+
         NSLayoutConstraint(item: button,
                            attribute: .width,
                            relatedBy: .equal,
@@ -78,8 +92,15 @@ class MenuView: UIView {
                            attribute: .notAnAttribute,
                            multiplier: 1.0,
                            constant: button.frame.height).isActive = true
+        NSLayoutConstraint(item: label,
+                           attribute: .width,
+                           relatedBy: .equal,
+                           toItem: nil,
+                           attribute: .notAnAttribute,
+                           multiplier: 1.0,
+                           constant: self.frame.width).isActive = true
 
-       NSLayoutConstraint.activate([centerHorizontally, centerVertically])
+       NSLayoutConstraint.activate([centerHorizontally, centerVertically, labelBottomConstraint])
 
     }
 
