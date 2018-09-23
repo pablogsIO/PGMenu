@@ -15,6 +15,7 @@
 		6E5D2F9321556625002AF833 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D2F9221556625002AF833 /* CircleButton.swift */; };
 		6EC7B5F621557B4C00D00E44 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC7B5F521557B4C00D00E44 /* Gradient.swift */; };
 		6EC7B5F9215585E400D00E44 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC7B5F8215585E400D00E44 /* MenuView.swift */; };
+		6ED5ABC2215765740092A488 /* StackMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED5ABC1215765740092A488 /* StackMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6E5D2F9221556625002AF833 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		6EC7B5F521557B4C00D00E44 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		6EC7B5F8215585E400D00E44 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		6ED5ABC1215765740092A488 /* StackMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				6E5D2F9221556625002AF833 /* CircleButton.swift */,
 				6EC7B5F521557B4C00D00E44 /* Gradient.swift */,
 				6EC7B5F8215585E400D00E44 /* MenuView.swift */,
+				6ED5ABC1215765740092A488 /* StackMenu.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EC7B5F9215585E400D00E44 /* MenuView.swift in Sources */,
+				6ED5ABC2215765740092A488 /* StackMenu.swift in Sources */,
 				6E5D2F9321556625002AF833 /* CircleButton.swift in Sources */,
 				6E5D2F8221555D59002AF833 /* ViewController.swift in Sources */,
 				6E5D2F8021555D59002AF833 /* AppDelegate.swift in Sources */,
