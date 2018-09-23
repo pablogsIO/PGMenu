@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E1D94E62157BA4300D0FFCC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D94E52157BA4300D0FFCC /* Configuration.swift */; };
 		6E5D2F8021555D59002AF833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D2F7F21555D59002AF833 /* AppDelegate.swift */; };
 		6E5D2F8221555D59002AF833 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D2F8121555D59002AF833 /* ViewController.swift */; };
 		6E5D2F8521555D59002AF833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D2F8321555D59002AF833 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E1D94E52157BA4300D0FFCC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6E5D2F7C21555D59002AF833 /* PGSMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PGSMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5D2F7F21555D59002AF833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E5D2F8121555D59002AF833 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				6EC7B5F521557B4C00D00E44 /* Gradient.swift */,
 				6EC7B5F8215585E400D00E44 /* MenuView.swift */,
 				6ED5ABC1215765740092A488 /* StackMenu.swift */,
+				6E1D94E52157BA4300D0FFCC /* Configuration.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				6EC7B5F9215585E400D00E44 /* MenuView.swift in Sources */,
 				6ED5ABC2215765740092A488 /* StackMenu.swift in Sources */,
+				6E1D94E62157BA4300D0FFCC /* Configuration.swift in Sources */,
 				6E5D2F9321556625002AF833 /* CircleButton.swift in Sources */,
 				6E5D2F8221555D59002AF833 /* ViewController.swift in Sources */,
 				6E5D2F8021555D59002AF833 /* AppDelegate.swift in Sources */,

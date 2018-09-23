@@ -9,6 +9,7 @@
 import UIKit
 
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+typealias GradientColors = (initColor: UIColor, endColor: UIColor)
 
 enum GradientOrientation {
     case leftRight

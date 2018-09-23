@@ -19,28 +19,36 @@ class MenuView: UIView {
         self.gradientColor = color
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
 
-        commonInit()
+        //commonInit()
     }
-
+    
+    init(frame: CGRect, parameters: ButtonConfiguration<CircleButtonParameters, Any>) {
+        let maximun = max(frame.width, frame.height)
+        
+        super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
+        
+        commonInit(parameters: parameters)
+    }
+    
     override convenience init(frame: CGRect) {
         self.init(frame: frame, color: UIColor.green, gradientOrientation: .bottomRightTopLeft)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        //commonInit()
     }
 
-    override func prepareForInterfaceBuilder() {
-        commonInit()
-    }
 
-    private func commonInit() {
+    private func commonInit(parameters: ButtonConfiguration<CircleButtonParameters, Any>) {
 
-        self.backgroundColor = self.gradientColor.withAlphaComponent(0.5)
+        //self.backgroundColor = self.gradientColor.withAlphaComponent(0.5)
+        self.backgroundColor = UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5).withAlphaComponent(0.5)
         self.layer.cornerRadius = 0.15 * self.bounds.width
-        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
         
+//        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), color: UIColor(displayP3Red: 7/255.0, green: 126/255.0, blue: 12/255.0, alpha: 1), gradientOrientation: .bottomRightTopLeft)
+
+        let button = CircleButton(frame: CGRect(x: self.frame.width/2 , y: self.frame.height/2, width: 100, height: 100), gradientColors: parameters[.gradientcolors] as! GradientColors, gradientOrientation:  parameters[.orientation] as! GradientOrientation)
         button.layer.masksToBounds  = true
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/8))
