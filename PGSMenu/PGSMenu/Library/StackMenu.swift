@@ -12,21 +12,16 @@ class StackMenu: UIStackView {
 
     private var stackViewLeft = UIStackView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     private var stackViewRight = UIStackView(frame: CGRect(x: 25, y: 0, width: 100, height: 100))
-    
-    
+
     init(frame: CGRect, configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         super.init(frame: frame)
         stacksConfiguration(configuration: configuration)
-        
     }
-    
 
-
-    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func stacksConfiguration(configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         self.axis = .horizontal
         self.alignment = .center
@@ -49,50 +44,23 @@ class StackMenu: UIStackView {
         self.addArrangedSubview(stackViewLeft)
         self.addArrangedSubview(stackViewRight)
         var index = 0
+        let menuViewWidth = stackViewLeft.frame.width
         for element in configuration {
 
-            let menu = MenuView(frame: CGRect(x: 100, y: 100, width: 100, height: 100), parameters: element)
-//
-//            let button = CircleButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50), gradientColors: element[.gradientcolors] as! GradientColors, gradientOrientation:  element[.orientation] as! GradientOrientation)
+            let menu = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: element)
+            //menu.translatesAutoresizingMaskIntoConstraints = true
             if index % 2 == 0 {
                 stackViewLeft.addArrangedSubview(menu)
 
-                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
-                NSLayoutConstraint.init(item: menu, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 1, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 1, constant: 0).isActive = true
             } else {
                 stackViewRight.addArrangedSubview(menu)
-                
-                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: stackViewRight.frame.size.width).isActive = true
-                NSLayoutConstraint.init(item: menu, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: stackViewRight.frame.size.width).isActive = true
+
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 1, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 1, constant: 0).isActive = true
             }
             index += 1
         }
-
-//        let one = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        one.backgroundColor = UIColor.red
-//        let two = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        two.backgroundColor = UIColor.blue
-//        let three = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        three.backgroundColor = UIColor.green
-//        let four = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        four.backgroundColor = UIColor.orange
-//
-//
-//        stackViewLeft.addArrangedSubview(three)
-//        stackViewLeft.addArrangedSubview(four)
-//
-//        stackViewRight.addArrangedSubview(one)
-//
-//        NSLayoutConstraint.init(item: one, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 75).isActive = true
-//        NSLayoutConstraint.init(item: one, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 75).isActive = true
-//
-//        NSLayoutConstraint.init(item: three, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 75).isActive = true
-//        NSLayoutConstraint.init(item: three, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 75).isActive = true
-//
-//        NSLayoutConstraint.init(item: four, attribute: .width, relatedBy: .equal, toItem: three, attribute: .width, multiplier: 1, constant: 0).isActive = true
-//        NSLayoutConstraint.init(item: four, attribute: .height , relatedBy: .equal, toItem: three, attribute: .height, multiplier: 1, constant: 0).isActive = true
-//
-
     }
-    
 }

@@ -17,12 +17,11 @@ class MenuView: UIView {
         let maximun = max(frame.width, frame.height)
 
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
-        
+
         commonInit(parameters: parameters)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //commonInit()
     }
 
     private func commonInit(parameters: ButtonConfiguration<CircleButtonParameters, Any>) {
