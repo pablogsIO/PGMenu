@@ -29,40 +29,45 @@ class StackMenu: UIStackView {
     
     private func stacksConfiguration(configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         self.axis = .horizontal
-        self.alignment = .top
+        self.alignment = .center
         self.distribution = .fillEqually
         self.spacing = 0
         self.contentMode = .scaleToFill
-        
-        
+
         stackViewLeft.axis = .vertical
         stackViewLeft.alignment = .center
         stackViewLeft.distribution = .equalSpacing
-        stackViewLeft.spacing = 0
+        stackViewLeft.spacing = 10
         stackViewLeft.contentMode = .scaleToFill
-        
-        
+
         stackViewRight.axis = .vertical
         stackViewRight.alignment = .center
         stackViewRight.distribution = .equalSpacing
-        stackViewRight.spacing = 0
+        stackViewRight.spacing = 10
         stackViewRight.contentMode = .scaleToFill
-        
+
         self.addArrangedSubview(stackViewLeft)
         self.addArrangedSubview(stackViewRight)
-        
+        var index = 0
         for element in configuration {
-            
-            let button = CircleButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50), gradientColors: element[.gradientcolors] as! GradientColors, gradientOrientation:  element[.orientation] as! GradientOrientation)
-            stackViewLeft.addArrangedSubview(button)
-            
-            NSLayoutConstraint.init(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
-            NSLayoutConstraint.init(item: button, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
+
+            let menu = MenuView(frame: CGRect(x: 100, y: 100, width: 100, height: 100), parameters: element)
+//
+//            let button = CircleButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50), gradientColors: element[.gradientcolors] as! GradientColors, gradientOrientation:  element[.orientation] as! GradientOrientation)
+            if index % 2 == 0 {
+                stackViewLeft.addArrangedSubview(menu)
+
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: stackViewLeft.frame.size.width).isActive = true
+            } else {
+                stackViewRight.addArrangedSubview(menu)
+                
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: stackViewRight.frame.size.width).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height , relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: stackViewRight.frame.size.width).isActive = true
+            }
+            index += 1
         }
-        
-        
-        
-        
+
 //        let one = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 //        one.backgroundColor = UIColor.red
 //        let two = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
