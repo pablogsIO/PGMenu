@@ -9,7 +9,7 @@
 import UIKit
 
 enum CircleButtonParameters: CaseIterable, Hashable {
-    
+
     case image
     case gradientcolors
     case orientation
@@ -17,12 +17,6 @@ enum CircleButtonParameters: CaseIterable, Hashable {
 }
 class CircleButton: UIButton {
 
-    init(frame: CGRect, parameters: CircleButtonParameters) {
-        let maximun = max(frame.width, frame.height)
-        super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
-
-
-    }
     init(frame: CGRect, gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
         let maximun = max(frame.width, frame.height)
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
@@ -35,14 +29,13 @@ class CircleButton: UIButton {
     }
 
     private func commonInit(gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
-    
+
         setGradienteBackground(colors: gradientColors, orientation: gradientOrientation)
         self.clipsToBounds = true
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
         self.translatesAutoresizingMaskIntoConstraints = false
-        //self.imageView?.contentMode = .scaleAspectFit
         self.setImage(UIImage(named: "airquality"), for: .normal)
-        
+
         let margin = self.bounds.size.width/4
         self.imageEdgeInsets = UIEdgeInsets(top: margin,left: margin,bottom: margin,right: margin)
 
@@ -54,8 +47,7 @@ extension UIView {
 
     func setGradienteBackground(colors: GradientColors, orientation: GradientOrientation){
         let gradient = CAGradientLayer()
-        
-//UIColor(rgb: 0x11998e).cgColor, UIColor(rgb: 0x38ef7d).cgColor
+
         gradient.colors = [colors.initColor.cgColor, colors.endColor.cgColor]
         gradient.startPoint = orientation.points().startPoint
         gradient.endPoint = orientation.points().endPoint
@@ -70,10 +62,10 @@ extension UIColor {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
+
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
-    
+
     convenience init(rgb: Int) {
         self.init(
             red: (rgb >> 16) & 0xFF,

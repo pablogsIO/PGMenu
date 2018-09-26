@@ -27,6 +27,9 @@ class ViewController: UIViewController {
                 return "Tube stations"
             }
         }
+        
+        let menu = MenuView(frame: CGRect(x: 50, y: 50, width: 100, height: 100), parameters: buttonConfiguration)
+        self.view.addSubview(menu)
 
         let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width , height: self.view.frame.size.height), configuration: [buttonConfiguration, buttonConfiguration, buttonConfiguration, buttonConfiguration])
         self.view.addSubview(stackMenu)
