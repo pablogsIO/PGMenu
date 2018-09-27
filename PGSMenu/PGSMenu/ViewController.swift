@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.setGradienteBackground(colors: (initColor: UIColor(rgb: 0x6A82FB), endColor: UIColor(rgb: 0xFC5C7D)), orientation: .bottomRightTopLeft)
+        self.view.gradienteBackground(colors: (initColor: UIColor(rgb: 0x6A82FB), endColor: UIColor(rgb: 0xFC5C7D)), orientation: .bottomRightTopLeft)
 
          let buttonConfiguration = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
             switch type {
@@ -27,9 +27,6 @@ class ViewController: UIViewController {
                 return "Tube stations"
             }
         }
-        
-        let menu = MenuView(frame: CGRect(x: 50, y: 50, width: 100, height: 100), parameters: buttonConfiguration)
-        self.view.addSubview(menu)
 
         let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width , height: self.view.frame.size.height), configuration: [buttonConfiguration, buttonConfiguration, buttonConfiguration, buttonConfiguration])
         self.view.addSubview(stackMenu)
@@ -42,4 +39,17 @@ class ViewController: UIViewController {
                         ])
     }
 
+}
+
+extension UIView {
+    
+    func gradienteBackground(colors: GradientColors, orientation: GradientOrientation) {
+        let gradient = CAGradientLayer()
+        
+        gradient.colors = [colors.initColor.cgColor, colors.endColor.cgColor]
+        gradient.startPoint = orientation.points().startPoint
+        gradient.endPoint = orientation.points().endPoint
+        gradient.frame = bounds
+        self.layer.insertSublayer(gradient, at: 0)
+    }
 }

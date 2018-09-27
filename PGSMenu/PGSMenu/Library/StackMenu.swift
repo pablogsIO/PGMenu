@@ -52,13 +52,13 @@ class StackMenu: UIStackView {
             if index % 2 == 0 {
                 stackViewLeft.addArrangedSubview(menu)
 
-//                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
-//                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
             } else {
                 stackViewRight.addArrangedSubview(menu)
 
-//                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
-//                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
+                NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: stackViewRight, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
             }
             index += 1
         }

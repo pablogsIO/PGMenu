@@ -66,12 +66,6 @@
                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="ToV-Yu-m5l" firstAttribute="width" secondItem="un9-tL-yDs" secondAttribute="width" id="Yw2-pS-XMv"/>
-                                            <constraint firstItem="un9-tL-yDs" firstAttribute="width" secondItem="CkW-jz-5DD" secondAttribute="width" id="b0p-wd-ULj"/>
-                                            <constraint firstItem="ToV-Yu-m5l" firstAttribute="height" secondItem="un9-tL-yDs" secondAttribute="height" id="bJG-oL-Hji"/>
-                                            <constraint firstItem="un9-tL-yDs" firstAttribute="height" secondItem="CkW-jz-5DD" secondAttribute="height" id="g24-oz-XVi"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Os2-y7-NEE" userLabel="Right">
                                         <rect key="frame" x="193" y="298.5" width="182" height="50"/>

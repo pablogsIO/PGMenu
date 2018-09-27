@@ -17,7 +17,7 @@ class MenuView: UIView {
         let maximun = max(frame.width, frame.height)
 
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
-
+        self.translatesAutoresizingMaskIntoConstraints = false
         commonInit(parameters: parameters)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -30,18 +30,17 @@ class MenuView: UIView {
         self.layer.cornerRadius = 0.15 * self.bounds.width
 
         let button = CircleButton(frame: CGRect(x: self.frame.size.width/2 , y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[.gradientcolors] as! GradientColors, gradientOrientation:  parameters[.orientation] as! GradientOrientation)
-        //button.layer.masksToBounds  = true
-
+       
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/5))
 
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.text = parameters[.text] as! String
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.text = parameters[.text] as? String
         label.textAlignment = .center
         label.textColor = UIColor(rgb: 0xFFFFFF)
 
         self.addSubview(button)
         self.addSubview(label)
-        //button.translatesAutoresizingMaskIntoConstraints = false
+
         label.translatesAutoresizingMaskIntoConstraints = false
 
         self.setConstraints(button: button, label: label)
@@ -93,9 +92,9 @@ class MenuView: UIView {
         NSLayoutConstraint(item: label,
                            attribute: .height,
                            relatedBy: .equal,
-                           toItem: nil,
-                           attribute: .notAnAttribute,
-                           multiplier: 1.0,
+                           toItem: self,
+                           attribute: .height,
+                           multiplier: 1.0/8.0  ,
                            constant: self.frame.height/8).isActive = true
 
         NSLayoutConstraint(item: label,

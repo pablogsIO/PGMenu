@@ -17,10 +17,12 @@ enum CircleButtonParameters: CaseIterable, Hashable {
 }
 class CircleButton: UIButton {
 
+    private var gradient = CAGradientLayer()
+
     init(frame: CGRect, gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
         let maximun = max(frame.width, frame.height)
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
         commonInit(gradientColors: gradientColors, gradientOrientation: gradientOrientation)
     }
 
@@ -31,30 +33,34 @@ class CircleButton: UIButton {
     private func commonInit(gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
 
         setGradienteBackground(colors: gradientColors, orientation: gradientOrientation)
+
         self.clipsToBounds = true
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
-        self.translatesAutoresizingMaskIntoConstraints = false
+
         self.setImage(UIImage(named: "airquality"), for: .normal)
 
         let margin = self.bounds.size.width/4
-        self.imageEdgeInsets = UIEdgeInsets(top: margin,left: margin,bottom: margin,right: margin)
+        self.imageEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
 
         self.bringSubviewToFront(self.imageView!)
     }
-}
 
-extension UIView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-    func setGradienteBackground(colors: GradientColors, orientation: GradientOrientation){
-        let gradient = CAGradientLayer()
-
+        self.gradient.frame = self.bounds
+        self.gradient.cornerRadius = 0.5 * self.bounds.size.width
+    }
+    
+    func setGradienteBackground(colors: GradientColors, orientation: GradientOrientation) {
+        gradient = CAGradientLayer()
+        
         gradient.colors = [colors.initColor.cgColor, colors.endColor.cgColor]
         gradient.startPoint = orientation.points().startPoint
         gradient.endPoint = orientation.points().endPoint
         gradient.frame = bounds
         self.layer.insertSublayer(gradient, at: 0)
     }
-
 }
 
 extension UIColor {
