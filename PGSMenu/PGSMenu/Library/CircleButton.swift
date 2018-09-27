@@ -51,10 +51,10 @@ class CircleButton: UIButton {
         self.gradient.frame = self.bounds
         self.gradient.cornerRadius = 0.5 * self.bounds.size.width
     }
-    
+
     func setGradienteBackground(colors: GradientColors, orientation: GradientOrientation) {
         gradient = CAGradientLayer()
-        
+
         gradient.colors = [colors.initColor.cgColor, colors.endColor.cgColor]
         gradient.startPoint = orientation.points().startPoint
         gradient.endPoint = orientation.points().endPoint

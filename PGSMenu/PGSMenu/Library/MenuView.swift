@@ -29,8 +29,8 @@ class MenuView: UIView {
         self.backgroundColor = UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5).withAlphaComponent(0.2)
         self.layer.cornerRadius = 0.15 * self.bounds.width
 
-        let button = CircleButton(frame: CGRect(x: self.frame.size.width/2 , y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[.gradientcolors] as! GradientColors, gradientOrientation:  parameters[.orientation] as! GradientOrientation)
-       
+        let button = CircleButton(frame: CGRect(x: self.frame.size.width/2, y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[ .gradientcolors] as! GradientColors, gradientOrientation: parameters[ .orientation] as! GradientOrientation)
+
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/5))
 
         label.font = UIFont.systemFont(ofSize: 12)

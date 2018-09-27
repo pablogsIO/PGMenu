@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             }
         }
 
-        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width , height: self.view.frame.size.height), configuration: [buttonConfiguration, buttonConfiguration, buttonConfiguration, buttonConfiguration])
+        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: [buttonConfiguration, buttonConfiguration, buttonConfiguration, buttonConfiguration])
         self.view.addSubview(stackMenu)
         stackMenu.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -42,10 +42,10 @@ class ViewController: UIViewController {
 }
 
 extension UIView {
-    
+
     func gradienteBackground(colors: GradientColors, orientation: GradientOrientation) {
         let gradient = CAGradientLayer()
-        
+
         gradient.colors = [colors.initColor.cgColor, colors.endColor.cgColor]
         gradient.startPoint = orientation.points().startPoint
         gradient.endPoint = orientation.points().endPoint

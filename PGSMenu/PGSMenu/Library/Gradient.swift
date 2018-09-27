@@ -20,7 +20,7 @@ enum GradientOrientation {
     case bottomRightTopLeft
     case topRightBottomLeft
     case bottomLeftTopRight
-    
+
     func points() -> GradientPoints {
         switch self {
         case .leftRight:
@@ -42,4 +42,3 @@ enum GradientOrientation {
         }
     }
 }
-

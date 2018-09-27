@@ -9,18 +9,18 @@
 import Foundation
 
 struct ButtonConfiguration<Enum: CaseIterable & Hashable, Value> {
-    private let values: [Enum : Value]
-    
+    private let values: [Enum: Value]
+
     init(resolver: (Enum) -> Value) {
-        var values = [Enum : Value]()
-        
+        var values = [Enum: Value]()
+
         for key in Enum.allCases {
             values[key] = resolver(key)
         }
-        
+
         self.values = values
     }
-    
+
     subscript(key: Enum) -> Value {
         // Here we have to force-unwrap, since there's no way
         // of telling the compiler that a value will always exist
