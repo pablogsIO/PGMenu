@@ -8,7 +8,14 @@
 
 import UIKit
 
+@objc protocol StackMenuDelegate {
+    
+    @objc optional func stackMenu( pressedButtonAtIndex: Int)
+}
+
 class StackMenu: UIStackView {
+
+    public var delegate: StackMenuDelegate?
 
     private var stackViewLeft = UIStackView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     private var stackViewRight = UIStackView(frame: CGRect(x: 25, y: 0, width: 100, height: 100))
@@ -65,7 +72,9 @@ class StackMenu: UIStackView {
     }
     @objc
     func buttonTapped(sender: UIButton) {
+        
         print("pablogsio: \(sender.tag) \(#function)")
+        delegate?.stackMenu?(pressedButtonAtIndex: sender.tag)
     }
 
 }

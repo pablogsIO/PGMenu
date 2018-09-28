@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         }
 
         let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: [buttonConfiguration, buttonConfiguration, buttonConfiguration, buttonConfiguration])
+        stackMenu.delegate = self
         self.view.addSubview(stackMenu)
         stackMenu.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -45,6 +46,13 @@ class ViewController: UIViewController {
         print("pablogsio: \(#function)")
     }
 
+}
+
+extension ViewController: StackMenuDelegate {
+    
+    @objc func stackMenu( pressedButtonAtIndex: Int) {
+        print("pablogsio: \(#function) index: \(pressedButtonAtIndex)")
+    }
 }
 
 extension UIView {

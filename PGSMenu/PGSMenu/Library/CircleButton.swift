@@ -39,6 +39,7 @@ class CircleButton: UIButton {
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
 
         self.setImage(UIImage(named: "airquality"), for: .normal)
+        self.setImage(UIImage(named: "airquality"), for: .highlighted)
 
         let margin = self.bounds.size.width/4
         self.imageEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
