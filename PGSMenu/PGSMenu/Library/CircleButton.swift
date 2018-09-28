@@ -14,6 +14,7 @@ enum CircleButtonParameters: CaseIterable, Hashable {
     case gradientcolors
     case orientation
     case text
+    case targetFunction
 }
 class CircleButton: UIButton {
 

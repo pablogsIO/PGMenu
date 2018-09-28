@@ -13,24 +13,25 @@ class MenuView: UIView {
     private var gradientOrientation = GradientOrientation.bottomRightTopLeft
     private var gradientColor = UIColor.black
 
-    init(frame: CGRect, parameters: ButtonConfiguration<CircleButtonParameters, Any>) {
+    init(frame: CGRect, parameters: ButtonConfiguration<CircleButtonParameters, Any>, index: Int) {
         let maximun = max(frame.width, frame.height)
 
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
         self.translatesAutoresizingMaskIntoConstraints = false
-        commonInit(parameters: parameters)
+        commonInit(parameters: parameters, index: index)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    private func commonInit(parameters: ButtonConfiguration<CircleButtonParameters, Any>) {
+    private func commonInit(parameters: ButtonConfiguration<CircleButtonParameters, Any>, index: Int) {
 
         self.backgroundColor = UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5).withAlphaComponent(0.2)
         self.layer.cornerRadius = 0.15 * self.bounds.width
 
         let button = CircleButton(frame: CGRect(x: self.frame.size.width/2, y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[ .gradientcolors] as! GradientColors, gradientOrientation: parameters[ .orientation] as! GradientOrientation)
-
+        button.tag = index
+        button.addTarget(nil, action: #selector(StackMenu.buttonTapped(sender:)), for: .touchUpInside)
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/5))
 
         label.font = UIFont.systemFont(ofSize: 12)

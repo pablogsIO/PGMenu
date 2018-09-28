@@ -47,7 +47,7 @@ class StackMenu: UIStackView {
         let menuViewWidth = stackViewLeft.frame.width
         for element in configuration {
 
-            let menu = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: element)
+            let menu = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: element, index: index)
             //menu.translatesAutoresizingMaskIntoConstraints = true
             if index % 2 == 0 {
                 stackViewLeft.addArrangedSubview(menu)
@@ -63,4 +63,12 @@ class StackMenu: UIStackView {
             index += 1
         }
     }
+    @objc
+    func buttonTapped(sender: UIButton) {
+        print("pablogsio: \(sender.tag) \(#function)")
+    }
+
+}
+@objc protocol AwesomeProtocol {
+    func awesomeMethod()
 }

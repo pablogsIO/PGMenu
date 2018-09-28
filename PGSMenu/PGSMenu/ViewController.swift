@@ -25,6 +25,8 @@ class ViewController: UIViewController {
                 return GradientOrientation.bottomRightTopLeft
             case .text:
                 return "Tube stations"
+            case .targetFunction:
+                return #selector(self.buttonHandler(_:))
             }
         }
 
@@ -37,6 +39,10 @@ class ViewController: UIViewController {
                         stackMenu.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
                         stackMenu.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
                         ])
+    }
+
+    @objc func buttonHandler(_ sender: CircleButton) {
+        print("pablogsio: \(#function)")
     }
 
 }
