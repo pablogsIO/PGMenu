@@ -33,7 +33,7 @@ class StackMenu: UIStackView {
         self.axis = .horizontal
         self.alignment = .center
         self.distribution = .fillEqually
-        self.spacing = 10
+        self.spacing = 0
         self.contentMode = .scaleToFill
 
         stackViewLeft.axis = .vertical

@@ -39,7 +39,7 @@ class MenuView: UIView {
         button?.addTarget(nil, action: #selector(StackMenu.buttonTapped(sender:)), for: .touchUpInside)
         label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/5))
 
-        label?.font = UIFont.systemFont(ofSize: 12)
+        label?.font = UIFont.systemFont(ofSize: 14)
         label?.text = parameters[.text] as? String
         label?.textAlignment = .center
         label?.textColor = UIColor(rgb: 0xFFFFFF)
