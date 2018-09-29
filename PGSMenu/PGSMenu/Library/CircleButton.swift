@@ -20,26 +20,26 @@ class CircleButton: UIButton {
 
     private var gradient = CAGradientLayer()
 
-    init(frame: CGRect, gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
+    init(frame: CGRect, gradientColors: GradientColors, gradientOrientation: GradientOrientation, imageName: String) {
         let maximun = max(frame.width, frame.height)
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
         self.translatesAutoresizingMaskIntoConstraints = false
-        commonInit(gradientColors: gradientColors, gradientOrientation: gradientOrientation)
+        commonInit(gradientColors: gradientColors, gradientOrientation: gradientOrientation, imageName: imageName)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func commonInit(gradientColors: GradientColors, gradientOrientation: GradientOrientation) {
+    private func commonInit(gradientColors: GradientColors, gradientOrientation: GradientOrientation, imageName: String) {
 
         setGradienteBackground(colors: gradientColors, orientation: gradientOrientation)
 
         self.clipsToBounds = true
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
 
-        self.setImage(UIImage(named: "airquality"), for: .normal)
-        self.setImage(UIImage(named: "airquality"), for: .highlighted)
+        self.setImage(UIImage(named: imageName), for: .normal)
+        self.setImage(UIImage(named: imageName), for: .highlighted)
 
         let margin = self.bounds.size.width/4
         self.imageEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
@@ -52,6 +52,8 @@ class CircleButton: UIButton {
 
         self.gradient.frame = self.bounds
         self.gradient.cornerRadius = 0.5 * self.bounds.size.width
+        let margin = self.bounds.size.width/4
+        self.imageEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
     }
 
     func setGradienteBackground(colors: GradientColors, orientation: GradientOrientation) {
