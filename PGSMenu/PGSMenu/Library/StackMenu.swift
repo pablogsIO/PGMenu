@@ -17,18 +17,21 @@ class StackMenu: UIStackView {
 
     public weak var delegate: StackMenuDelegate?
 
+    private let relationFactor: CGFloat = 0.40*6/7.0
+
     private var panelStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
 
     init(frame: CGRect, configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         super.init(frame: frame)
-        stacksConfiguration(configuration: configuration)
+        stackConfiguration()
+        stackItemsConfiguration(configuration: configuration)
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func stacksConfiguration(configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
+    private func stackConfiguration() {
         self.axis = .horizontal
         self.alignment = .center
         self.distribution = .equalSpacing
@@ -43,39 +46,42 @@ class StackMenu: UIStackView {
 
         self.addArrangedSubview(panelStackView)
 
-        let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> buttonConfigurationTuple in
+    }
+
+    private func stackItemsConfiguration(configuration: [buttonConfiguration]) {
+
+        let stackItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> buttonConfigurationTuple in
             (configuration[index], index<configuration.count-1 ? configuration[index+1] : nil )
         }
 
         var buttonTag = 0
-        for element in panelItems {
-            setConstraints(menuItems: element, buttonTag: buttonTag, totalLines: panelItems.count)
+        for element in stackItems {
+            setConstraints(menuItems: element, buttonTag: buttonTag)
             buttonTag += 2
         }
     }
-
-    private func setConstraints(menuItems: (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?), buttonTag: Int, totalLines: Int) {
+    private func setConstraints(menuItems: buttonConfigurationTuple, buttonTag: Int) {
         let menuViewWidth = panelStackView.frame.width
 
-        let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.40*6*self.frame.width/7))
-        let leadingTrailing = (self.frame.width - 2*(0.40*6*self.frame.width/7))/3
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: relationFactor*self.frame.width))
+        let leadingTrailing = (self.frame.width - 2*(relationFactor*self.frame.width))/3
 
         let first = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {
             let second = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
-            setConstraint(container: container, menu: first, leading: leadingTrailing, trailing: nil)
-            setConstraint(container: container, menu: second, leading: nil, trailing: leadingTrailing)
+            setConstraintMenuItem(container: container, menu: first, leading: leadingTrailing, trailing: nil)
+            setConstraintMenuItem(container: container, menu: second, leading: nil, trailing: leadingTrailing)
         } else {
-            setConstraint(container: container, menu: first, leading: nil, trailing: nil)
+            setConstraintMenuItem(container: container, menu: first, leading: nil, trailing: nil)
         }
         panelStackView.addArrangedSubview(container)
         panelStackView.spacing = leadingTrailing
         NSLayoutConstraint.init(item: container, attribute: .width, relatedBy: .equal, toItem: panelStackView, attribute: .width, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint.init(item: container, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.40*6/7.0, constant: 0).isActive = true
+        NSLayoutConstraint.init(item: container, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: relationFactor, constant: 0).isActive = true
     }
 
-    private func setConstraint(container: UIView, menu: MenuItem, leading: CGFloat?, trailing: CGFloat?) {
+    private func setConstraintMenuItem(container: UIView, menu: MenuItem, leading: CGFloat?, trailing: CGFloat?) {
 
         container.addSubview(menu)
 

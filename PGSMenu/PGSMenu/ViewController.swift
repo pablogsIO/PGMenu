@@ -47,7 +47,7 @@ class ViewController: UIViewController {
                                                  gradient: Gradient(colors: (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe)), orientation: GradientOrientation.bottomRightTopLeft),
                                                  textMenuItem: "Tube Lines")
 
-        parameters = [airquality, journey, lineStatus, tubeLines]
+        parameters = [airquality, journey, lineStatus, tubeLines, airquality, tubeLines, journey]
         return parameters
     }
 
