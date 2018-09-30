@@ -66,14 +66,14 @@ class StackMenu: UIStackView {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: relationFactor*self.frame.width))
         let leadingTrailing = (self.frame.width - 2*(relationFactor*self.frame.width))/3
 
-        let first = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
+        let firstItem = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {
             let second = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
-            setConstraintMenuItem(container: container, menu: first, leading: leadingTrailing, trailing: nil)
+            setConstraintMenuItem(container: container, menu: firstItem, leading: leadingTrailing, trailing: nil)
             setConstraintMenuItem(container: container, menu: second, leading: nil, trailing: leadingTrailing)
         } else {
-            setConstraintMenuItem(container: container, menu: first, leading: nil, trailing: nil)
+            setConstraintMenuItem(container: container, menu: firstItem, leading: nil, trailing: nil)
         }
         panelStackView.addArrangedSubview(container)
         panelStackView.spacing = leadingTrailing
