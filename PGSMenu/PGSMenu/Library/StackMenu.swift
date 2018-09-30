@@ -42,11 +42,11 @@ class StackMenu: UIStackView {
         panelStackView.contentMode = .scaleToFill
 
         self.addArrangedSubview(panelStackView)
-        // TODO: Typealias for ButtonConfiguration<CircleButtonParameters, Any>
-        let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?) in
+
+        let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> buttonConfiguration in
             (configuration[index], index<configuration.count-1 ? configuration[index+1] : nil )
         }
-        let containerHeight = self.frame.size.height/CGFloat(panelItems.count)
+
         var buttonTag = 0
         for element in panelItems {
             setConstraints(menuItems: element, buttonTag: buttonTag, totalLines: panelItems.count)
@@ -59,7 +59,7 @@ class StackMenu: UIStackView {
 
         let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.40*6*self.frame.width/7))
         let leadingTrailing = (self.frame.width - 2*(0.40*6*self.frame.width/7))/3
-        //Menu Items
+
         let first = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {

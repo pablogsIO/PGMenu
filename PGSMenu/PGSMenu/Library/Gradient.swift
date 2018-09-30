@@ -11,6 +11,11 @@ import UIKit
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
 typealias GradientColors = (initColor: UIColor, endColor: UIColor)
 
+struct Gradient {
+    var colors: GradientColors
+    var orientation: GradientOrientation
+}
+
 enum GradientOrientation {
     case leftRight
     case rightLeft

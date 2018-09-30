@@ -15,66 +15,8 @@ class ViewController: UIViewController {
 
         self.view.gradienteBackground(colors: (initColor: UIColor(rgb: 0x6A82FB), endColor: UIColor(rgb: 0xFC5C7D)), orientation: .bottomRightTopLeft)
 
-         let buttonConfiguration = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .image:
-                return "airquality"
-            case .gradientcolors:
-                return (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d))
-            case .orientation:
-                return GradientOrientation.bottomRightTopLeft
-            case .text:
-                return "Air quality"
-            case .targetFunction:
-                return #selector(self.buttonHandler(_:))
-            }
-        }
-
-        let secondItem = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .image:
-                return "journey"
-            case .gradientcolors:
-                return (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb))
-            case .orientation:
-                return GradientOrientation.bottomRightTopLeft
-            case .text:
-                return "Journey"
-            case .targetFunction:
-                return #selector(self.buttonHandler(_:))
-            }
-        }
-
-        let lineStatus = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .image:
-                return "linestatus"
-            case .gradientcolors:
-                return (initColor: UIColor(rgb: 0xfc4a1a), endColor: UIColor(rgb: 0xf7b733))
-            case .orientation:
-                return GradientOrientation.bottomRightTopLeft
-            case .text:
-                return "Lines Status"
-            case .targetFunction:
-                return #selector(self.buttonHandler(_:))
-            }
-        }
-
-        let tubeLines = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .image:
-                return "tubelines"
-            case .gradientcolors:
-                return (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe))
-            case .orientation:
-                return GradientOrientation.bottomRightTopLeft
-            case .text:
-                return "Tube Lines"
-            case .targetFunction:
-                return #selector(self.buttonHandler(_:))
-            }
-        }
-        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: [buttonConfiguration, secondItem, lineStatus, tubeLines, buttonConfiguration, secondItem, lineStatus])
+        let menuItems = self.getButtonsParameters()
+        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: menuItems)
         stackMenu.delegate = self
         self.view.addSubview(stackMenu)
         stackMenu.translatesAutoresizingMaskIntoConstraints = false
@@ -86,8 +28,56 @@ class ViewController: UIViewController {
                         ])
     }
 
-    @objc func buttonHandler(_ sender: CircleButton) {
-        print("pablogsio: \(#function)")
+    func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>] {
+
+        var parameters = [ButtonConfiguration<CircleButtonParameters, Any>]()
+
+        let airquality = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
+            switch type {
+            case .imageName:
+                return "airquality"
+            case .gradient:
+                return Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)), orientation: GradientOrientation.bottomRightTopLeft)
+            case .textMenuItem:
+                return "Air quality"
+            }
+        }
+
+        let secondItem = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
+            switch type {
+            case .imageName:
+                return "journey"
+            case .gradient:
+                return Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)), orientation: GradientOrientation.bottomRightTopLeft)
+            case .textMenuItem:
+                return "Journey"
+            }
+        }
+
+        let lineStatus = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
+            switch type {
+            case .imageName:
+                return "linestatus"
+            case .gradient:
+                return Gradient(colors: (initColor: UIColor(rgb: 0xfc4a1a), endColor: UIColor(rgb: 0xf7b733)), orientation: GradientOrientation.bottomRightTopLeft)
+            case .textMenuItem:
+                return "Lines Status"
+            }
+        }
+
+        let tubeLines = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
+            switch type {
+            case .imageName:
+                return "tubelines"
+            case .gradient:
+                return Gradient(colors: (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe)), orientation: GradientOrientation.bottomRightTopLeft)
+            case .textMenuItem:
+                return "Tube Lines"
+            }
+        }
+
+        parameters = [airquality, secondItem, lineStatus, tubeLines, airquality, secondItem, lineStatus]
+        return parameters
     }
 
 }

@@ -78,10 +78,10 @@
 		6E5D2F9121555DCF002AF833 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6ED5ABC1215765740092A488 /* StackMenu.swift */,
+				6EC7B5F8215585E400D00E44 /* MenuItem.swift */,
 				6E5D2F9221556625002AF833 /* CircleButton.swift */,
 				6EC7B5F521557B4C00D00E44 /* Gradient.swift */,
-				6EC7B5F8215585E400D00E44 /* MenuItem.swift */,
-				6ED5ABC1215765740092A488 /* StackMenu.swift */,
 				6E1D94E52157BA4300D0FFCC /* Configuration.swift */,
 			);
 			path = Library;

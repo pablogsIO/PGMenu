@@ -20,7 +20,6 @@ class MenuItem: UIView {
         let maximun = max(frame.width, frame.height)
 
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun*82.0/76.0)))
-//        super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
         self.translatesAutoresizingMaskIntoConstraints = false
         commonInit(parameters: parameters, index: index)
     }
@@ -33,13 +32,13 @@ class MenuItem: UIView {
         self.backgroundColor = UIColor(displayP3Red: 45/255.0, green: 43/255.0, blue: 88/255.0, alpha: 0.5).withAlphaComponent(0.2)
         self.layer.cornerRadius = 0.20 * self.bounds.width
 
-        button = CircleButton(frame: CGRect(x: self.frame.size.width/2, y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradientColors: parameters[ .gradientcolors] as! GradientColors, gradientOrientation: parameters[ .orientation] as! GradientOrientation, imageName: parameters[.image] as! String)
+        button = CircleButton(frame: CGRect(x: self.frame.size.width/2, y: self.frame.size.width/2, width: self.frame.size.width/2, height: self.frame.size.width/2), gradient: parameters[ .gradient] as! Gradient, imageName: parameters[.imageName] as! String)
         button?.tag = index
         button?.addTarget(nil, action: #selector(StackMenu.buttonTapped(sender:)), for: .touchUpInside)
         label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height/5))
 
         label?.font = UIFont.systemFont(ofSize: 14)
-        label?.text = parameters[.text] as? String
+        label?.text = parameters[.textMenuItem] as? String
         label?.textAlignment = .center
         label?.textColor = UIColor(rgb: 0xFFFFFF)
 

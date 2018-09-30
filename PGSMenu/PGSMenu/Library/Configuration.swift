@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias buttonConfiguration = (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?)
+
 struct ButtonConfiguration<Enum: CaseIterable & Hashable, Value> {
     private let values: [Enum: Value]
 
@@ -22,11 +24,7 @@ struct ButtonConfiguration<Enum: CaseIterable & Hashable, Value> {
     }
 
     subscript(key: Enum) -> Value {
-        // Here we have to force-unwrap, since there's no way
-        // of telling the compiler that a value will always exist
-        // for any given key. However, since it's kept private
-        // it should be fine - and we can always add tests to
-        // make sure things stay safe.
+
         return values[key]!
     }
 }
