@@ -46,26 +46,23 @@ class StackMenu: UIStackView {
         let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?) in
             (configuration[index], index<configuration.count-1 ? configuration[index+1] : nil )
         }
-
+        var buttonTag = 0
         for element in panelItems {
-            setConstraints(menuItems: element)
+            setConstraints(menuItems: element, buttonTag: buttonTag)
+            buttonTag += 2
         }
-
     }
-    
-    private func setConstraints(menuItems: (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?)) {
+
+    private func setConstraints(menuItems: (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?), buttonTag: Int) {
         let menuViewWidth = panelStackView.frame.width
-        var index = 0
 
         let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.25*self.frame.width))
         let leadingTrailing = (container.frame.size.height)/4
         //Menu Items
-        let first = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: index)
-        index += 1
+        let first = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {
-            let second = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: index)
-            index += 1
+            let second = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
             setConstraint(container: container, menu: first, leading: leadingTrailing, trailing: nil)
             setConstraint(container: container, menu: second, leading: nil, trailing: leadingTrailing)
         } else {
