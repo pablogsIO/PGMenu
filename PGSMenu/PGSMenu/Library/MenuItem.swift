@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuView: UIView {
+class MenuItem: UIView {
 
     private var gradientOrientation = GradientOrientation.bottomRightTopLeft
     private var gradientColor = UIColor.black

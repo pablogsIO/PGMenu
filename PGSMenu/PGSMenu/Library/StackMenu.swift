@@ -46,23 +46,24 @@ class StackMenu: UIStackView {
         let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?) in
             (configuration[index], index<configuration.count-1 ? configuration[index+1] : nil )
         }
+        let containerHeight = self.frame.size.height/CGFloat(panelItems.count)
         var buttonTag = 0
         for element in panelItems {
-            setConstraints(menuItems: element, buttonTag: buttonTag)
+            setConstraints(menuItems: element, buttonTag: buttonTag, totalLines: panelItems.count)
             buttonTag += 2
         }
     }
 
-    private func setConstraints(menuItems: (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?), buttonTag: Int) {
+    private func setConstraints(menuItems: (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?), buttonTag: Int, totalLines: Int) {
         let menuViewWidth = panelStackView.frame.width
 
-        let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.25*self.frame.width))
-        let leadingTrailing = (container.frame.size.height)/4
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.40*6*self.frame.width/7))
+        let leadingTrailing = (self.frame.width - 2*(0.40*6*self.frame.width/7))/3
         //Menu Items
-        let first = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
+        let first = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {
-            let second = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
+            let second = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
             setConstraint(container: container, menu: first, leading: leadingTrailing, trailing: nil)
             setConstraint(container: container, menu: second, leading: nil, trailing: leadingTrailing)
         } else {
@@ -71,10 +72,10 @@ class StackMenu: UIStackView {
         panelStackView.addArrangedSubview(container)
         panelStackView.spacing = leadingTrailing
         NSLayoutConstraint.init(item: container, attribute: .width, relatedBy: .equal, toItem: panelStackView, attribute: .width, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint.init(item: container, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.40, constant: 0).isActive = true
+        NSLayoutConstraint.init(item: container, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.40*6/7.0, constant: 0).isActive = true
     }
 
-    private func setConstraint(container: UIView, menu: MenuView, leading: CGFloat?, trailing: CGFloat?) {
+    private func setConstraint(container: UIView, menu: MenuItem, leading: CGFloat?, trailing: CGFloat?) {
 
         container.addSubview(menu)
 
