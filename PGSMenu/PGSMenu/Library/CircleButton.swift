@@ -10,21 +10,19 @@ import UIKit
 
 enum CircleButtonParameters: CaseIterable, Hashable {
 
-    case image
-    case gradientcolors
-    case orientation
-    case text
-    case targetFunction
+    case imageName
+    case gradient
+    case textMenuItem
 }
 class CircleButton: UIButton {
 
     private var gradient = CAGradientLayer()
 
-    init(frame: CGRect, gradientColors: GradientColors, gradientOrientation: GradientOrientation, imageName: String) {
+    init(frame: CGRect, gradient: Gradient, imageName: String) {
         let maximun = max(frame.width, frame.height)
         super.init(frame: CGRect(origin: frame.origin, size: CGSize(width: maximun, height: maximun)))
         self.translatesAutoresizingMaskIntoConstraints = false
-        commonInit(gradientColors: gradientColors, gradientOrientation: gradientOrientation, imageName: imageName)
+        commonInit(gradientColors: gradient.colors, gradientOrientation: gradient.orientation, imageName: imageName)
     }
 
     required init?(coder aDecoder: NSCoder) {
