@@ -74,7 +74,7 @@ class ViewController: UIViewController {
                 return #selector(self.buttonHandler(_:))
             }
         }
-        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: [buttonConfiguration, secondItem, lineStatus, tubeLines])
+        let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: [buttonConfiguration, secondItem, lineStatus, tubeLines, buttonConfiguration])
         stackMenu.delegate = self
         self.view.addSubview(stackMenu)
         stackMenu.translatesAutoresizingMaskIntoConstraints = false
