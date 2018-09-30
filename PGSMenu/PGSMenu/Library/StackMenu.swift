@@ -69,9 +69,9 @@ class StackMenu: UIStackView {
         let firstItem = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItems.0, index: buttonTag)
 
         if let menuItem = menuItems.1 {
-            let second = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
+            let secondItem = MenuItem(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: menuItem, index: (buttonTag+1))
             setConstraintMenuItem(container: container, menu: firstItem, leading: leadingTrailing, trailing: nil)
-            setConstraintMenuItem(container: container, menu: second, leading: nil, trailing: leadingTrailing)
+            setConstraintMenuItem(container: container, menu: secondItem, leading: nil, trailing: leadingTrailing)
         } else {
             setConstraintMenuItem(container: container, menu: firstItem, leading: nil, trailing: nil)
         }
