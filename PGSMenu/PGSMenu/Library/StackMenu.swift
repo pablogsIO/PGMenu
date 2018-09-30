@@ -43,7 +43,7 @@ class StackMenu: UIStackView {
 
         self.addArrangedSubview(panelStackView)
 
-        let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> buttonConfiguration in
+        let panelItems = stride(from: 0, to: configuration.count, by: 2).map { (index) -> buttonConfigurationTuple in
             (configuration[index], index<configuration.count-1 ? configuration[index+1] : nil )
         }
 

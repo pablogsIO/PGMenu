@@ -28,56 +28,42 @@ class ViewController: UIViewController {
                         ])
     }
 
-    func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>] {
+    private func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>] {
 
         var parameters = [ButtonConfiguration<CircleButtonParameters, Any>]()
 
-        let airquality = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .imageName:
-                return "airquality"
-            case .gradient:
-                return Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)), orientation: GradientOrientation.bottomRightTopLeft)
-            case .textMenuItem:
-                return "Air quality"
-            }
-        }
+        let airquality = getMenuItemConfiguration(imageName: "airquality",
+                                                  gradient: Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)),
+                                                                     orientation: GradientOrientation.bottomRightTopLeft),
+                                                  textMenuItem: "Air quality")
+        let journey = getMenuItemConfiguration(imageName: "journey",
+                                               gradient: Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)), orientation: GradientOrientation.bottomRightTopLeft),
+                                               textMenuItem: "Journey")
+        let lineStatus = getMenuItemConfiguration(imageName: "linestatus",
+                                               gradient: Gradient(colors: (initColor: UIColor(rgb: 0xfc4a1a), endColor: UIColor(rgb: 0xf7b733)), orientation: GradientOrientation.bottomRightTopLeft),
+                                               textMenuItem: "Lines Status")
 
-        let secondItem = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .imageName:
-                return "journey"
-            case .gradient:
-                return Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)), orientation: GradientOrientation.bottomRightTopLeft)
-            case .textMenuItem:
-                return "Journey"
-            }
-        }
+        let tubeLines = getMenuItemConfiguration(imageName: "tubelines",
+                                                 gradient: Gradient(colors: (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe)), orientation: GradientOrientation.bottomRightTopLeft),
+                                                 textMenuItem: "Tube Lines")
 
-        let lineStatus = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .imageName:
-                return "linestatus"
-            case .gradient:
-                return Gradient(colors: (initColor: UIColor(rgb: 0xfc4a1a), endColor: UIColor(rgb: 0xf7b733)), orientation: GradientOrientation.bottomRightTopLeft)
-            case .textMenuItem:
-                return "Lines Status"
-            }
-        }
-
-        let tubeLines = ButtonConfiguration<CircleButtonParameters, Any> { (type) -> Any in
-            switch type {
-            case .imageName:
-                return "tubelines"
-            case .gradient:
-                return Gradient(colors: (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe)), orientation: GradientOrientation.bottomRightTopLeft)
-            case .textMenuItem:
-                return "Tube Lines"
-            }
-        }
-
-        parameters = [airquality, secondItem, lineStatus, tubeLines, airquality, secondItem, lineStatus]
+        parameters = [airquality, journey, lineStatus, tubeLines]
         return parameters
+    }
+
+    private func getMenuItemConfiguration(imageName: String, gradient: Gradient, textMenuItem: String) -> buttonConfiguration {
+
+        let menuItemConfiguration = ButtonConfiguration<CircleButtonParameters, Any>(resolver: { (type) -> Any in
+            switch type {
+            case .imageName:
+                return imageName
+            case .gradient:
+                return gradient
+            case .textMenuItem:
+                return textMenuItem
+            }
+        })
+        return menuItemConfiguration
     }
 
 }
