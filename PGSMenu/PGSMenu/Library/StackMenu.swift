@@ -23,6 +23,7 @@ class StackMenu: UIStackView {
     init(frame: CGRect, configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         super.init(frame: frame)
         stacksConfiguration(configuration: configuration)
+        
     }
 
     required init(coder: NSCoder) {
@@ -32,45 +33,65 @@ class StackMenu: UIStackView {
     private func stacksConfiguration(configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         self.axis = .horizontal
         self.alignment = .center
-        self.distribution = .fillEqually
+        self.distribution = .equalSpacing
         self.spacing = 0
         self.contentMode = .scaleToFill
 
         stackViewLeft.axis = .vertical
         stackViewLeft.alignment = .center
         stackViewLeft.distribution = .equalSpacing
-        stackViewLeft.spacing = 10
+        stackViewLeft.spacing = 0
         stackViewLeft.contentMode = .scaleToFill
 
         stackViewRight.axis = .vertical
         stackViewRight.alignment = .center
         stackViewRight.distribution = .equalSpacing
         stackViewRight.spacing = 10
-        stackViewRight.contentMode = .scaleToFill
+        //stackViewRight.contentMode = .scaleToFill
 
         self.addArrangedSubview(stackViewLeft)
-        self.addArrangedSubview(stackViewRight)
+//        self.addArrangedSubview(stackViewRight)
 
         var index = 0
         let menuViewWidth = stackViewLeft.frame.width
+        var container: UIView?
+        var leadingTrailing: CGFloat?
         for element in configuration {
-            // TODO: change
+            
             let menu = MenuView(frame: CGRect(x: 0, y: 0, width: menuViewWidth, height: menuViewWidth), parameters: element, index: index)
             //menu.translatesAutoresizingMaskIntoConstraints = true
             if index % 2 == 0 {
-                setConstraint(stackiew: stackViewLeft, menu: menu)
+                container = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.25*self.frame.width))
+
+                leadingTrailing = (container?.frame.size.height)!/4
+                stackViewLeft.spacing = leadingTrailing!
+                setConstraint(container: container!, menu: menu, index: index, leading: leadingTrailing, trailing: nil)
             } else {
-                setConstraint(stackiew: stackViewRight, menu: menu)
+                setConstraint(container: container!, menu: menu, index: index, leading: nil, trailing: leadingTrailing)
             }
             index += 1
         }
     }
 
-    private func setConstraint(stackiew: UIStackView, menu: MenuView) {
-        stackiew.addArrangedSubview(menu)
+    private func setConstraint(container: UIView, menu: MenuView, index: Int, leading: CGFloat?, trailing: CGFloat?) {
 
-        NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: stackiew, attribute: .width, multiplier: 0.75, constant: 0).isActive = true
-        NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: menu, attribute: .width, multiplier: 82.0/76.0, constant: 0).isActive = true
+        let colors = [UIColor.red, UIColor.blue, UIColor.orange, UIColor.green, UIColor.purple]
+        //container.backgroundColor = colors[index]
+        container.addSubview(menu)
+
+        NSLayoutConstraint.init(item: menu, attribute: .centerY, relatedBy: .equal, toItem: container, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint.init(item: menu, attribute: .height, relatedBy: .equal, toItem: container, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint.init(item: menu, attribute: .width, relatedBy: .equal, toItem: menu, attribute: .height, multiplier: 1, constant: 0).isActive = true
+        if let leading = leading {
+            NSLayoutConstraint.init(item: menu, attribute: .leading , relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: leading).isActive = true
+        } else {
+            NSLayoutConstraint.init(item: menu, attribute: .trailing , relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: -trailing!).isActive = true
+        }
+        stackViewLeft.addArrangedSubview(container)
+
+        NSLayoutConstraint.init(item: container, attribute: .width, relatedBy: .equal, toItem: stackViewLeft, attribute: .width, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint.init(item: container, attribute: .height, relatedBy: .equal, toItem: container, attribute: .width, multiplier: 0.40, constant: 0).isActive = true
+
     }
 
     @objc
