@@ -46,8 +46,16 @@ class ViewController: UIViewController {
         let tubeLines = getMenuItemConfiguration(imageName: "tubelines",
                                                  gradient: Gradient(colors: (initColor: UIColor(rgb: 0x1c92d2), endColor: UIColor(rgb: 0xf2fcfe)), orientation: GradientOrientation.bottomRightTopLeft),
                                                  textMenuItem: "Tube Lines")
+        let bike = getMenuItemConfiguration(imageName: "bike",
+                                                  gradient: Gradient(colors: (initColor: UIColor(rgb: 0x2c3e50), endColor: UIColor(rgb: 0x4CA1AF)),
+                                                                     orientation: GradientOrientation.bottomRightTopLeft),
+                                                  textMenuItem: "Bikes")
+        let bus = getMenuItemConfiguration(imageName: "bus",
+                                                  gradient: Gradient(colors: (initColor: UIColor(rgb: 0x834d9b), endColor: UIColor(rgb: 0xd04ed6)),
+                                                                     orientation: GradientOrientation.bottomRightTopLeft),
+                                                  textMenuItem: "Bus Stops")
 
-        parameters = [airquality, journey, lineStatus, tubeLines, airquality, tubeLines, journey]
+        parameters = [airquality, journey, lineStatus, tubeLines, bike, bus]
         return parameters
     }
 
