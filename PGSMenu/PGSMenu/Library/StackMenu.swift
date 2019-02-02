@@ -99,7 +99,10 @@ class StackMenu: UIStackView {
 
     @objc
     func buttonTapped(sender: UIButton) {
-        delegate?.stackMenu?(pressedButtonAtIndex: sender.tag)
+
+        sender.animate {
+            self.delegate?.stackMenu?(pressedButtonAtIndex: sender.tag)
+        }
     }
 
 }

@@ -14,6 +14,7 @@ enum CircleButtonParameters: CaseIterable, Hashable {
     case gradient
     case textMenuItem
 }
+
 class CircleButton: UIButton {
 
     private var gradient = CAGradientLayer()
@@ -65,20 +66,21 @@ class CircleButton: UIButton {
     }
 }
 
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+extension UIButton {
 
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-    }
+    func animate(completion: @escaping () -> Void) {
 
-    convenience init(rgb: Int) {
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
+        CATransaction.begin()
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
+
+        animation.keyTimes = [0, 0.5, 1]
+        animation.values = [1, 0.5, 1]
+        animation.duration = 0.5
+
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        layer.add(animation, forKey: "animation")
+        CATransaction.commit()
     }
 }

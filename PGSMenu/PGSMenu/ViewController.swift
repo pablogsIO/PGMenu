@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 extension ViewController: StackMenuDelegate {
 
     @objc func stackMenu( pressedButtonAtIndex: Int) {
-        print("pablogsio: \(#function) index: \(pressedButtonAtIndex)")
+        print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
     }
 }
 
