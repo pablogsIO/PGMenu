@@ -50,13 +50,13 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
                                             gradient: Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)),
                                             orientation: GradientOrientation.bottomRightTopLeft),
                                             textMenuItem: "Air quality")
-   let journey = getMenuItemConfiguration(imageName: "journey",
+  let journey = getMenuItemConfiguration(imageName: "journey",
                                           gradient: Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)),
-                                         orientation: GradientOrientation.bottomRightTopLeft), textMenuItem: "Journey")
+                                          orientation: GradientOrientation.bottomRightTopLeft), textMenuItem: "Journey")
 
-    parameters = [airquality, journey]
-    return parameters
-    }
+  parameters = [airquality, journey]
+  return parameters
+}
 
 
 ```
