@@ -1,9 +1,9 @@
 ## PGMenu
 
 ![](https://img.shields.io/badge/language-swift-blue.svg)
-![](https://img.shields.io/badge/version-1.1.0-red.svg)
-[![License](https://img.shields.io/cocoapods/l/PGLevelIndicator.svg?style=flat)](https://github.com/pablogsIO/PGLevelIndicator)
-[![Platform](https://img.shields.io/cocoapods/p/PGLevelIndicator.svg?style=flat)](https://github.com/pablogsIO/PGLevelIndicator)
+![](https://img.shields.io/badge/version-1.0.0-red.svg)
+[![License](https://img.shields.io/cocoapods/l/PGLevelIndicator.svg?style=flat)](https://github.com/pablogsIO/PGMenu)
+[![Platform](https://img.shields.io/cocoapods/p/PGLevelIndicator.svg?style=flat)](https://github.com/pablogsIO/PGMenu)
 
 
 An Menu component for your awesome apps!
@@ -95,7 +95,7 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
           print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
       }
   }
-  
+
 ```
 
 - And finally, add the stackmenu to the main view
