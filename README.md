@@ -9,7 +9,7 @@
 An Menu component for your awesome apps!
 
 <p align="center">
-  <img width="500" src="https://raw.githubusercontent.com/pablogsIO/PGMenu/master/Assets/PGMenu.png">
+  <img width="500" src="https://raw.githubusercontent.com/pablogsIO/PGMenu/master/Assets/PGMenu.gif">
 </p>
 
 
