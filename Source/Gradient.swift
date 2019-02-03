@@ -8,15 +8,21 @@
 
 import UIKit
 
-typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
-typealias GradientColors = (initColor: UIColor, endColor: UIColor)
+public typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+public typealias GradientColors = (initColor: UIColor, endColor: UIColor)
 
-struct Gradient {
+public struct Gradient {
     var colors: GradientColors
     var orientation: GradientOrientation
+
+    public init(colors: GradientColors, orientation: GradientOrientation) {
+        self.colors = colors
+        self.orientation = orientation
+    }
+
 }
 
-enum GradientOrientation {
+public enum GradientOrientation {
     case leftRight
     case rightLeft
     case topBottom
@@ -26,7 +32,7 @@ enum GradientOrientation {
     case topRightBottomLeft
     case bottomLeftTopRight
 
-    func points() -> GradientPoints {
+    public func points() -> GradientPoints {
         switch self {
         case .leftRight:
             return (startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
@@ -48,7 +54,7 @@ enum GradientOrientation {
     }
 }
 
-extension UIColor {
+public extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")

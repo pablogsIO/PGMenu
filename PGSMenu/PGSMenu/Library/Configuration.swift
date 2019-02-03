@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias buttonConfigurationTuple = (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?)
-typealias buttonConfiguration = ButtonConfiguration<CircleButtonParameters, Any>
+public typealias buttonConfigurationTuple = (ButtonConfiguration<CircleButtonParameters, Any>, ButtonConfiguration<CircleButtonParameters, Any>?)
+public typealias buttonConfiguration = ButtonConfiguration<CircleButtonParameters, Any>
 
-struct ButtonConfiguration<Enum: CaseIterable & Hashable, Value> {
+public struct ButtonConfiguration<Enum: CaseIterable & Hashable, Value> {
     private let values: [Enum: Value]
 
-    init(resolver: (Enum) -> Value) {
+    public init(resolver: (Enum) -> Value) {
         var values = [Enum: Value]()
 
         for key in Enum.allCases {

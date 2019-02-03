@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CircleButtonParameters: CaseIterable, Hashable {
+public enum CircleButtonParameters: CaseIterable, Hashable {
 
     case imageName
     case gradient

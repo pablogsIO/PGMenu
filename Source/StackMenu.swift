@@ -8,12 +8,12 @@
 
 import UIKit
 
-@objc protocol StackMenuDelegate {
+@objc public protocol StackMenuDelegate {
 
     @objc optional func stackMenu( pressedButtonAtIndex: Int)
 }
 
-class StackMenu: UIStackView {
+open class StackMenu: UIStackView {
 
     public weak var delegate: StackMenuDelegate?
 
@@ -21,13 +21,13 @@ class StackMenu: UIStackView {
 
     private var panelStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
 
-    init(frame: CGRect, configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
+    public init(frame: CGRect, configuration: [ButtonConfiguration<CircleButtonParameters, Any>]) {
         super.init(frame: frame)
         stackConfiguration()
         stackItemsConfiguration(configuration: configuration)
     }
 
-    required init(coder: NSCoder) {
+    required public init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
