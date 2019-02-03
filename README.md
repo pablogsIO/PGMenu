@@ -62,7 +62,8 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
 
 ```
 - Create the StackMenu object
--
+
+
 ```swift
 
   let menuItems = self.getButtonsParameters()
@@ -70,7 +71,7 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
 
 ```
 
-- Set the delegate and implement the delegate method
+- Set the delegate
 
 ```swift
 
@@ -82,6 +83,19 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
           print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
       }
   }
+```
+
+- Implement the delegate method
+
+```swift
+
+  extension ViewController: StackMenuDelegate {
+
+      @objc func stackMenu( pressedButtonAtIndex: Int) {
+          print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
+      }
+  }
+  
 ```
 
 - And finally, add the stackmenu to the main view
