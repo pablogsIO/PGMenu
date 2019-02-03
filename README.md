@@ -9,9 +9,8 @@
 An Menu component for your awesome apps!
 
 <p align="center">
-  <img width="500" src="https://raw.githubusercontent.com/pablogsIO/PGMenu/master/Assets/PGMenu.png">
+  <img width="300" src="https://raw.githubusercontent.com/pablogsIO/PGMenu/master/Assets/PGMenu.png">
 </p>
-
 
 ## Requirements
 
@@ -25,7 +24,7 @@ You have a fully functional demo in [PGMenu](https://github.com/pablogsIO/PGMenu
 
 ### Manually
 
-Just drag and drop [Source](https://github.com/pablogsIO/PGLevelIndicator/tree/master/Source) folder in your project
+Just drag and drop [Source](https://github.com/pablogsIO/PGMenu/tree/master/Source) folder in your project
 
 ### Cocoapods
 
@@ -38,37 +37,58 @@ pod 'PGMenu'
 
 ## Using PGMenu
 
-- Create attributed strings with the text you want
+- Create an array of ButtonConfiguration<CircleButtonParameters, Any> you can use this function:
 
 
 ```swift
 
+func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>] {
+
+  var parameters = [ButtonConfiguration<CircleButtonParameters, Any>]()
+
+  let airquality = getMenuItemConfiguration(imageName: "airquality",
+                                            gradient: Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)),
+                                            orientation: GradientOrientation.bottomRightTopLeft),
+                                            textMenuItem: "Air quality")
+        let journey = getMenuItemConfiguration(imageName: "journey",
+                                               gradient: Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)),
+                                               orientation: GradientOrientation.bottomRightTopLeft),
+                                               textMenuItem: "Journey")
+
+        parameters = [airquality, journey]
+        return parameters
+    }
 
 
 ```
-
+- Create the StackMenu object
+-
 ```swift
 
+  let menuItems = self.getButtonsParameters()
+  let stackMenu = StackMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height), configuration: menuItems)
 
 ```
 
-- Create an array of parameters:
+- Set the delegate and implement the delegate method
 
 ```swift
 
+  stackMenu.delegate = self
 
-```
+  extension ViewController: StackMenuDelegate {
 
-- Create the StackMenu object:
-
-```swift
-
-
+      @objc func stackMenu( pressedButtonAtIndex: Int) {
+          print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
+      }
+  }
 ```
 
 - And finally, add the stackmenu to the main view
 
 ```swift
+
+  self.view.addSubview(stackMenu)
 
 ```
 
