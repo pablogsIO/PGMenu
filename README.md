@@ -50,13 +50,12 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
                                             gradient: Gradient(colors: (initColor: UIColor(rgb: 0x11998e), endColor: UIColor(rgb: 0x38ef7d)),
                                             orientation: GradientOrientation.bottomRightTopLeft),
                                             textMenuItem: "Air quality")
-        let journey = getMenuItemConfiguration(imageName: "journey",
-                                               gradient: Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)),
-                                               orientation: GradientOrientation.bottomRightTopLeft),
-                                               textMenuItem: "Journey")
+   let journey = getMenuItemConfiguration(imageName: "journey",
+                                          gradient: Gradient(colors: (initColor: UIColor(rgb: 0x800080), endColor: UIColor(rgb: 0xffc0cb)),
+                                         orientation: GradientOrientation.bottomRightTopLeft), textMenuItem: "Journey")
 
-        parameters = [airquality, journey]
-        return parameters
+    parameters = [airquality, journey]
+    return parameters
     }
 
 
@@ -77,12 +76,6 @@ func getButtonsParameters() -> [ButtonConfiguration<CircleButtonParameters, Any>
 
   stackMenu.delegate = self
 
-  extension ViewController: StackMenuDelegate {
-
-      @objc func stackMenu( pressedButtonAtIndex: Int) {
-          print("Pressed: \(#function) index: \(pressedButtonAtIndex)")
-      }
-  }
 ```
 
 - Implement the delegate method
