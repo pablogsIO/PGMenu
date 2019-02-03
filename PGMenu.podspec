@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PGMenu"
-  s.version      = "0.1.1"
+  s.version      = "1.0.0"
   s.summary      = "A Menu component for you awesome apps!"
   s.homepage     = "https://github.com/pablogsIO/PGMenu"
   s.license      = 'MIT'
